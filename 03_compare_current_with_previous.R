@@ -29,11 +29,37 @@ source("02_scrape_nominees.R")
 
 
 #load current staff data
+staff_data_scraped <- readRDS("processed_data/staff_data_scraped.rds")
 staff_data_scraped
 
+#load archived staff data to compare against 
+staff_data_previous <- readRDS("archived_data/staff_data_archived_2020_12_07t14_01.rds")
+staff_data_previous
 
+#find records of new staff names
+newnames <- anti_join(staff_data_scraped, staff_data_previous, by = "idstring")
 
+#see what we have 
+newnames
 
+#compare counts of staff from Dec. 7 data to Nov. 24 data
+staffcount_current <- staff_data_scraped %>%
+  count(name)
+
+staffcount_previous <- staff_data_previous %>%
+  count(name)
+
+#join
+
+staffcount_compare <- left_join(staffcount_current, staffcount_previous, by = "n")
+staffcount_compare
+
+#committing files 
+saveRDS(newnames, "processed_data/newstaffnames.rds")
+saveRDS(staffcount_compare, "processed_data/staffcountcompare.rds")
+
+seniorstaff <-staff_data_scraped
+saveRDS(seniorstaff, "processed_data/seniorstaff.rds")
 
 #### AGENCY TEAMS ##### --------------------------------------------------------
 
