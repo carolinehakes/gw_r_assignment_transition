@@ -28,8 +28,8 @@ source("02_scrape_nominees.R")
 # YOUR CODE
 
 
-
-
+#load current staff data
+staff_data_scraped
 
 
 
