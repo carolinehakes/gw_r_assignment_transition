@@ -14,6 +14,7 @@ library(janitor)
 library(scales)
 library(gt)
 library(kableExtra)
+
 options(dplyr.summarise.inform = FALSE)
 
 #run the script for step 03 to update the datasets to capture the current live verions
