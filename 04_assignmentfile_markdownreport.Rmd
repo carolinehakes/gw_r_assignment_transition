@@ -37,9 +37,9 @@ Below write code to show the new names added to the agency review team lists sin
 
 ```{r, echo=FALSE}
 
+newnames <- anti_join(transition_data_current, transition_data_previous, by = "idstring")
 
-
- 
+newnames
 
 ```
 
@@ -51,9 +51,7 @@ Add data to show the total number of people appointed to each agency team, along
 
 ```{r, echo=FALSE}
 
-
-
-
+agencycount_compare
 
 ```
 
@@ -64,24 +62,44 @@ Show the top 10 **largest** agency review teams as of today:
 
 ```{r, echo=FALSE}
 
-
+agencycount_current %>%
+  arrange(desc(current_count))
 
 
 
 
 ```
+So the top 10 largest agency review teams are: 
+HHS
+DOD
+DHS
+DOJ
+State
+Labor
+Treasure
+Commerce
+Intel 
+Education 
 
 Show the top **smallest** agency review teams as of today - which we'll define here as less than five members:
 
 ```{r, echo=FALSE}
 
-
+agencycount_current %>%
+  arrange(current_count)
 
 
  
 
 ```
-
+So the smallest agency review teams (less than 5 members) are:
+US Digital Service
+Council of Economic Advisors
+FTC
+Environmental Quality
+FCC
+Social Security
+USPS
 
 
 # WHITE HOUSE SENIOR STAFF
@@ -95,8 +113,8 @@ Below write code to show the new names added to the senior staff lists since the
 
 ```{r, echo=FALSE}
 
-
-
+newnames2 <- anti_join(staff_data_scraped, staff_data_previous, by = "idstring")
+newnames2
  
 
 ```
@@ -109,8 +127,9 @@ Add code to show the total number of people currently named to the WH senior sta
 
 ```{r, echo=FALSE}
 
-
+staffcount_compare
 
 
 
 ```
+According to the data I have, there has been NO change in staffing since the last time we scraped data. 
