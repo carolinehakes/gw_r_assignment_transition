@@ -1,6 +1,6 @@
 ---
 title: "GW Assignment - Biden Transition"
-author: "YOUR NAME HERE"
+author: "CAROLINE HAKES"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
 ---
@@ -51,7 +51,9 @@ Add data to show the total number of people appointed to each agency team, along
 
 ```{r, echo=FALSE}
 
-agencycount_compare
+agencycount_compare %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
 
 ```
 
@@ -63,22 +65,22 @@ Show the top 10 **largest** agency review teams as of today:
 ```{r, echo=FALSE}
 
 agencycount_current %>%
-  arrange(desc(current_count))
-
-
+  arrange(desc(current_count)) %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
 
 
 ```
 So the top 10 largest agency review teams are: 
-HHS
-DOD
-DHS
-DOJ
-State
-Labor
-Treasure
-Commerce
-Intel 
+HHS,
+DOD,
+DHS,
+DOJ,
+State,
+Labor,
+Treasury,
+Commerce,
+Intel,
 Education 
 
 Show the top **smallest** agency review teams as of today - which we'll define here as less than five members:
@@ -86,19 +88,23 @@ Show the top **smallest** agency review teams as of today - which we'll define h
 ```{r, echo=FALSE}
 
 agencycount_current %>%
-  arrange(current_count)
+  arrange(current_count) %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+
+
 
 
  
 
 ```
 So the smallest agency review teams (less than 5 members) are:
-US Digital Service
-Council of Economic Advisors
-FTC
-Environmental Quality
-FCC
-Social Security
+US Digital Service,
+Council of Economic Advisors,
+FTC,
+Environmental Quality,
+FCC,
+Social Security,
 USPS
 
 
@@ -127,7 +133,9 @@ Add code to show the total number of people currently named to the WH senior sta
 
 ```{r, echo=FALSE}
 
-staffcount_compare
+staffcount_compare %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
 
 
 
